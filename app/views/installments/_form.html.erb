@@ -1,0 +1,32 @@
+<%= form_with(model: installment, local: true) do |form| %>
+  <% if installment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(installment.errors.count, "error") %> prohibited this installment from being saved:</h2>
+
+      <ul>
+        <% installment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deadline %>
+    <%= form.date_select :deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :loan_id %>
+    <%= form.text_field :loan_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
