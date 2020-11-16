@@ -1,8 +1,12 @@
-FactoryBot.define do
+FactoryBot.define do 
   factory :loan do
-    amount { "9.99" }
-    number_installments { 1 }
-    interest_rate { "9.99" }
-    requester { nil }
+    amount { rand(10000.0..100000.0) }
+    deadline { rand(1..12) }
+    interest_rate { rand(0.1..3.0) }
+    requester { create(:requester)}
+
+    trait :negative_amount do 
+      amount { rand(-10000..-100000)}
+    end
   end
 end
